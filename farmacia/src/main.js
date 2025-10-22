@@ -1,4 +1,4 @@
-import './style.css'  
+import './style.css'; 
 
 const produtos = [
   { id: "p1", nome: "Alprazolam", preco: 12.5, estoque: 3, validade: "2026-05-01" },
@@ -29,7 +29,6 @@ const modalCarrinho = document.getElementById('carrinho');
 const fecharCarrinho = document.getElementById('fecharCarrinho');
 const totalEl = document.getElementById("total");
 const btnFinalizar = document.getElementById("finalizar");
-const btnFechar = document.getElementById("fecharCarrinho");
 const itensCarrinho = document.getElementById("itensCarrinho");
 
 renderProdutos(produtos);
@@ -43,7 +42,7 @@ function renderProdutos(lista) {
       <h3>${p.nome}</h3>
       <p>R$ ${p.preco.toFixed(2)}</p>
       <p>Estoque: ${p.estoque}</p>
-      <p>Validade: ${p.validade}</p>  <!-- Mostra a validade -->
+      <p>Validade: ${p.validade}</p>
       <button data-id="${p.id}">Adicionar</button>
     `;
     produtosDiv.appendChild(card);
@@ -54,14 +53,12 @@ function renderProdutos(lista) {
   });
 }
 
-// busca é case-sensitive 
 btnBuscar.addEventListener("click", () => {
   const termo = campoBusca.value;
   const filtrados = produtos.filter(p => p.nome.includes(termo));
   renderProdutos(filtrados);
 });
 
-//  não verifica estoque nem validade 
 function adicionarAoCarrinho(id) {
   const prod = produtos.find(p => p.id === id);
   if (!prod) return;
@@ -81,7 +78,6 @@ function precisaDeReceita(nomeProduto) {
   return n.includes("clonazepam") || n.includes("amoxicilina") || n.includes("biotônico");
 }
 
-// total esta incorreto ---
 function calcularTotal() {
   let soma = 0;
   carrinho.forEach(i => soma += i.preco * i.qtd);
@@ -99,7 +95,6 @@ function renderCarrinho() {
   carrinho.forEach(i => {
     const prod = produtos.find(p => p.id === i.id);
     const validade = prod ? prod.validade : "";
-    
     const li = document.createElement("li");
     const receitHTML = i.precisaReceita
       ? `<div class="receita">
@@ -132,30 +127,16 @@ function renderCarrinho() {
 }
 
 function removerDoCarrinho(id) {
-  // remove só a primeira ocorrência
   const index = carrinho.findIndex(i => i.id === id);
   if (index >= 0) carrinho.splice(index, 1);
   atualizarResumoCarrinho();
 }
 
-// aceita produto vencido 
-// não limpa carrinho após compra 
 btnFinalizar.addEventListener("click", () => {
-  // permite finalizar sem receita e produtos vencidos
-  console.log("Compra finalizada com sucesso! (Carrinho não é limpo)");
-
-  // Atualiza o resumo do carrinho (não limpa os itens, defeito proposital)
-  atualizarResumoCarrinho();
-
-  // Opcional: você pode adicionar uma pequena mensagem visual na página
   const msg = document.getElementById("msgFinalizar");
   if(msg) msg.textContent = "Compra realizada!";
+  atualizarResumoCarrinho();
 });
 
-btnCarrinho.addEventListener('click', () => {
-  modalCarrinho.classList.add('ativo');
-});
-
-fecharCarrinho.addEventListener('click', () => {
-  modalCarrinho.classList.remove('ativo');
-});
+btnCarrinho.addEventListener('click', () => modalCarrinho.classList.add('ativo'));
+fecharCarrinho.addEventListener('click', () => modalCarrinho.classList.remove('ativo'));
