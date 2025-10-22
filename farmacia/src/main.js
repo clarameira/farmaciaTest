@@ -1,6 +1,5 @@
-// src/main.js - Versão simples com regra de receita (defeito intencional)
+import './style.css'  
 
-// Catálogo fixo (inclui "clonazepan" e "amoxilina" conforme você pediu)
 const produtos = [
   { id: "p1", nome: "Alprazolam", preco: 12.5, estoque: 3, validade: "2026-05-01" },
   { id: "p2", nome: "Vitamina C 500mg", preco: 29.9, estoque: 0, validade: "2024-01-01" },
