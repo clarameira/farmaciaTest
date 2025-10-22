@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmaTest</title>
+    <script type="module" crossorigin src="/farmaciaTest/assets/index-DjoFJ3tp.js"></script>
+    <link rel="stylesheet" crossorigin href="/farmaciaTest/assets/index-BqQhXqiV.css">
+  </head>
+  <body>
+    <header>
+      <h1>💊 FarmaTest</h1>
+      <div class="busca">
+        <input id="search" placeholder="Buscar medicamento conforme sua necessidade" />
+        <button id="btnBuscar">🔍 Buscar</button>
+        <button id="btnCarrinho">🛒 Carrinho (0)</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="produtos" class="grade"></div>
+    </main>
+
+    <div id="carrinho" class="modal">
+      <div class="modal-conteudo">
+        <h2>🛍️ Seu carrinho</h2>
+        <ul id="itensCarrinho"></ul>
+        <p>Total: R$ <span id="total">0.00</span></p>
+        <div class="acoes">
+          <p id="msgFinalizar" style="color:green; font-weight:bold;"></p>
+          <button id="finalizar" class="confirmar">Finalizar Compra</button>
+          <button id="fecharCarrinho" class="cancelar">Fechar</button>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
